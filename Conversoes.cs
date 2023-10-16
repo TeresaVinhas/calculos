@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using static Calculos.Aritmetica;
@@ -21,6 +22,16 @@ namespace Calculos
             CelsiusFahrenheit,
             FahrenheitCelsius
         }
+
+
+        public enum ConversaoDistancia
+        {
+            Nulo = 0,
+            MetrosMilhas,
+            MilhasMetros
+        }
+
+
         /// <summary>
         /// Conversão de Temperaturas
         /// </summary>
@@ -39,5 +50,24 @@ namespace Calculos
             }
             return -1;
         }
+        /// <summary>
+        /// Conversãode distancias 
+        /// </summary>
+        /// <param name="conversao"> A conversao a efetuar</param>
+        /// <param name="distancia"> a distancia a converter</param>
+        /// <returns> o resultado da conversao da distancia</returns>
+        public static double ConverterDistancias(ConversaoDistancia conversao, double distancia) 
+        {
+            if (conversao == ConversaoDistancia.MetrosMilhas)
+            {
+                return distancia * 0.0006213712;
+            }
+            else if (conversao == ConversaoDistancia.MilhasMetros)
+            {
+                return distancia * 1609.344;
+            }
+            return -1;
+        }
+
     }
 }
